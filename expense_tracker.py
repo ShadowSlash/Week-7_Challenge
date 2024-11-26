@@ -235,16 +235,11 @@ class TestExpensesTask(unittest.TestCase):
                 self.assertEqual(self.task.expenses[0]["description"], "Dinner")
             else:
                 mock_delete.return_value.status_code = 204
-                print("2")
 
                 self.task.expenses = [{"id": 1, "description": "Lunch", "amount": 12.95, "date": "2024-11-02"}]
-                print("4")
                 self.task.delete_expense(URL, 1)
-                print("6")
                 self.task.expenses = []
-                print("8")
                 self.assertEqual(len(self.task.expenses), 0)
-                print("10")
         except Exception as e:
             print(f"Error: FAILED AT LIFE!\n {e}")
 
